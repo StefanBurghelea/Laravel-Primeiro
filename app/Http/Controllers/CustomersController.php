@@ -39,6 +39,8 @@ class CustomersController extends Controller
 
         event(new NewCustomerRegisteredEvent($customer));
         
+        Mail::to($customer->email)->send(new WelcomeNewUserMail()); // envia o mail para o customer
+
 
         //register to newsletter
 
