@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Customer;
 use App\Company;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeNewUserMail; 
+use App\Events\NewCustomerRegisteredEvent; 
 
 class CustomersController extends Controller
 {
@@ -34,8 +36,9 @@ class CustomersController extends Controller
     public function store(){
 
         $customer = Customer::create($this->validadeRequest());
+
+        event(new NewCustomerRegisteredEvent($customer));
         
-        Mail::to($customer->email)->send(new WelcomeNewUserMail());
 
         //register to newsletter
 
