@@ -15,6 +15,7 @@ class NewCustomerRegisteredEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $customer;
+
     /**
      * Create a new event instance.
      *
@@ -22,6 +23,6 @@ class NewCustomerRegisteredEvent
      */
     public function __construct($customer)
     {
-        $this->customer=$customer;
+        $this->customer = $customer;
     }
 }

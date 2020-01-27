@@ -21,10 +21,11 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         NewCustomerRegisteredEvent::class => [
             WelcomeNewCustomerListener::class,
-            RegisterCustomerNewsletter::class,
-            NotifyAdminSlack::class,
+            RegisterCustomerToNewsletter::class,
+            NotifyAdminViaSlack::class,
         ],
     ];
+
 
     /**
      * Register any events for your application.

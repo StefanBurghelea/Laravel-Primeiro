@@ -8,15 +8,6 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class NotifyAdminSlack
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * Handle the event.
@@ -26,6 +17,8 @@ class NotifyAdminSlack
      */
     public function handle(NewCustomerRegisteredEvent $event)
     {
-        //
+        //Slak notfication to admin
+
+        dump('Slack message here');
     }
 }

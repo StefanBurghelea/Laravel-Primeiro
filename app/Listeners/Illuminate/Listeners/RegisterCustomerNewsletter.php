@@ -8,15 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class RegisterCustomerNewsletter
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+   
 
     /**
      * Handle the event.
@@ -26,6 +18,8 @@ class RegisterCustomerNewsletter
      */
     public function handle(NewCustomerRegisteredEvent $event)
     {
-        //
+        //register to newsletter
+
+        dump('Register to newsletter');
     }
 }

@@ -38,19 +38,8 @@ class CustomersController extends Controller
         $customer = Customer::create($this->validadeRequest());
 
         event(new NewCustomerRegisteredEvent($customer));
-        
-        Mail::to($customer->email)->send(new WelcomeNewUserMail()); // envia o mail para o customer
 
-
-        //register to newsletter
-
-        dump('Register to newsletter');
-
-        //Slak notfication to admin
-
-        dump('Slack message here');
-
-        //return redirect('customers');
+        return redirect('customers');
     }
 
 
