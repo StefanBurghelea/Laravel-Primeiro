@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Listeners\WelcomeNewCustomerListener;
 use Illuminate\Listeners\RegisterCustomerNewsletter;
 use Illuminate\Listeners\NotifyAdminSlack;
+use App\Events\NewCustomerRegisteredEvent; 
+
 
 
 class EventServiceProvider extends ServiceProvider
@@ -20,9 +22,9 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         NewCustomerRegisteredEvent::class => [
-            WelcomeNewCustomerListener::class,
-            RegisterCustomerToNewsletter::class,
-            NotifyAdminViaSlack::class,
+            \App\Listeners\WelcomeNewCustomerListener::class,
+            \App\Listeners\RegisterCustomerToNewsletter::class,
+            \App\Listeners\NotifyAdminViaSlack::class,
         ],
     ];
 

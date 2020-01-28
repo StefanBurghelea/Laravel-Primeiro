@@ -9,6 +9,9 @@ use App\Company;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeNewUserMail; 
 use App\Events\NewCustomerRegisteredEvent; 
+use Illuminate\Listeners\WelcomeNewCustomerListener;
+use Illuminate\Listeners\RegisterCustomerNewsletter;
+use Illuminate\Listeners\NotifyAdminSlack;
 
 class CustomersController extends Controller
 {
