@@ -23,8 +23,7 @@ class CustomersController extends Controller
     
     public function index(){
 
-        $customers=Customer::all();
-        $companies = Company::all();
+        $customers = Customer::with('company')->paginate(15); // em vem de ir 1-1 vai n-1 para ter melhor processamaneto
 
         return view('customers.index', compact('customers'));
     }

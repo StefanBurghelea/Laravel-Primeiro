@@ -22,9 +22,16 @@
         <div class="col-4"><a href="/customers/{{ $customer->id}}">{{ $customer->name }}</a></div>
         <div class="col-4">{{ $customer->company->name }}</div>
         <div class="col-2">{{ $customer->active}}</div>
-
+        
     @endforeach
-    
+
+    <div class="row">
+        <div class="col-12 text-center pt-4">
+            {{ $customers->links()}}
+        </div>
+
     </div>
+    
+</div>
 
 @endsection
