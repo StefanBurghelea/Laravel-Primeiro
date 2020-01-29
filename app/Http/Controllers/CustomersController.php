@@ -12,6 +12,7 @@ use App\Events\NewCustomerRegisteredEvent;
 use Illuminate\Listeners\WelcomeNewCustomerListener;
 use Illuminate\Listeners\RegisterCustomerNewsletter;
 use Illuminate\Listeners\NotifyAdminSlack;
+use Intervention\Image\Facades\Image;
 
 class CustomersController extends Controller
 {
@@ -79,22 +80,14 @@ class CustomersController extends Controller
 
     private function validadeRequest(){
 
-        return tap(request()->validate([
+        return request()->validate([
 
             'name' => 'required|min:3',
             'email' => 'required|email',
             'active' => 'required',
             'company_id' => 'required',
-
-        ]),function(){
-            if(request()->hasFile('image')){
-
-                request()->validate([
-                    'image' => 'file|image|max:5000',
-
-                ]);
-            }
-        });
+            'image' => 'sometimes|file|image|max:5000',
+        ]);
 
     }
 
@@ -104,6 +97,9 @@ class CustomersController extends Controller
             $customer->update([
                 'image' => request()->image->store('uploads', 'public'),
             ]);
+
+            $image = Image::make(public_path('storage/'.$customer->image))->fit(300,300);
+            $image->save();
         }
     }
 }
